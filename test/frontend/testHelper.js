@@ -3,12 +3,12 @@ import chaiImmutable from 'chai-immutable';
 import { JSDOM }         from 'jsdom';
 
 const doc = new JSDOM('<!DOCTYPE HTML><html><body></body</html>');
-const win = doc.defaultView;
-global.document = doc;
+const win = doc.window;
+global.document = win.document;
 global.window   = win;
-for(let key in win) {
+for(let key in window) {
     if(!(key in global)) {
-        global[key] = win[key]
+        global[key] = window[key]
     }
 };
 
