@@ -54,13 +54,14 @@ describe("application logic", () => {
                     candidates: List.of('SUPERHOT', 'Superflight'),
                     votes: Map({
                         'SUPERHOT': 26,
-                        'SuperFlight': 25
+                        'Superflight': 25
                     })
                 }),
                 entries: List()
             });
             const nextState = currentVote(state);
             expect(nextState).to.equal(Map({
+                runnersUp: List.of('Superflight'),
                 winner: 'SUPERHOT'
             }))
         });
