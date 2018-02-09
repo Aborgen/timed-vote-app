@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { List, Map }     from 'immutable';
 
 import AppView           from './Components/AppView/AppView';
 import ResultsView       from './Components/ResultsView/ResultsView';
 
-class App extends Component {
+class App extends PureComponent {
     render() {
-        const result = {
+        const candidates = List.of('SUPERHOT', 'Superflight', 'Valley');
+        const result = Map({
             "winner": 'SUPERHOT',
-            "runnersUp": ['Superflight', 'Valley', 'Crysis 2']
-        };
-        // const result = null;
+            "runnersUp": List.of(['Superflight', 'Valley', 'Crysis 2'])
+        });
         const voted = 'SUPERHOT';
+        const votes = Map({'SUPERHOT': 4, 'Superflight': 3})
+
         return (
             <Switch>
                 <Route exact={true} path="/">
-                    <AppView hasVoted={voted}
-                             vote={this.props.vote}
-                             results={result} />
+                    <AppView candidates={candidates}
+                             vote={this.props.vote} />
                 </Route>
                 <Route path="/results">
-                    <ResultsView />
+                    <ResultsView candidates={candidates}
+                                 votes={votes} />
                 </Route>
             </Switch>
         );

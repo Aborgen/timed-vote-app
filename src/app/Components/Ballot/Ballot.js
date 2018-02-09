@@ -20,7 +20,8 @@ class Ballot extends PureComponent {
             return (
                 <button style={{"float":"left"}} key={candidate}
                         disabled={this.disableVoting()}
-                        onClick={() => vote(candidate)}>
+                        onClick={() => vote(candidate)}
+                        className="candidate">
                     <h1>{candidate}</h1>
                     { hasVoted === candidate &&
                       <div className="label">Voted!</div> }
@@ -37,8 +38,4 @@ class Ballot extends PureComponent {
 export default Ballot;
 Ballot.propTypes = {
     candidates: PropTypes.array
-}
-
-Ballot.defaultProps = {
-    candidates: ['SUPERHOT', 'SuperFlight']
 }
