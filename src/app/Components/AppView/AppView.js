@@ -1,11 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 
 import Ballot  from '../Ballot/Ballot';
 import Results from '../Results/Results';
 
 class AppView extends PureComponent {
     render() {
-        const Fragment = React.Fragment;
         return (
             <Fragment>
                 { this.props.results
