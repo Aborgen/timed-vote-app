@@ -25,9 +25,14 @@ export function currentVote(state, n = 2) {
         assignWinner(state.get('ballot'))
     );
     if(entries.size === 1) {
+        const candidates = state.getIn(['ballot', 'candidates']);
+        const winner = entries.first();
+        const runnersUp = candidates.filter((candidate) => {
+            return candidate !== winner ? candidate : ''
+        });
         return state.remove('ballot')
                     .remove('entries')
-                    .set('winner', entries.first())
+                    .set('results', Map({ winner, runnersUp }), 0)
     }
 
     const candidates  = entries.take(n);
