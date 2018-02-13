@@ -5,7 +5,7 @@ import { renderIntoDocument,
          scryRenderedDOMComponentsWithTag,
          Simulate } from 'react-dom/test-utils';
 
-import AppView from '../../../src/app/Components/AppView/AppView';
+import { AppView }  from '../../../src/app/Components/AppView/AppView';
 
 describe('AppView', () => {
     it("renders a child element which contains any number of buttons", () => {

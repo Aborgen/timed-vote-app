@@ -68,7 +68,10 @@ describe('reducer', () => {
         ];
         const finalState = actions.reduce(reducer, Map());
         expect(finalState).to.equal(Map({
-            winner: 'SUPERHOT'
+            results: Map({
+                winner: 'SUPERHOT',
+                runnersUp: List.of('Valley')
+            })
         }));
     });
 });

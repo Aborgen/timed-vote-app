@@ -1,7 +1,7 @@
 import { expect }    from 'chai';
 import { List, Map } from 'immutable';
 
-import reducer       from '../../../src/app/reducer';
+import reducer       from '../../../src/app/Reducers/reducer';
 
 describe('reducer', () => {
     it("handles SET_STATE", () => {
@@ -20,13 +20,13 @@ describe('reducer', () => {
         };
         const nextState = reducer(state, action);
         expect(nextState).to.equal(Map({
-            ballot: {
+            ballot: Map({
                 candidates: List.of('SUPERHOT', 'Superflight'),
                 votes: Map({
                     'SUPERHOT': 3,
                     'Superflight': 3
                 })
-            }
+            })
         }));
     });
 
@@ -35,9 +35,9 @@ describe('reducer', () => {
         const action = {
             type: 'SET_STATE',
             state: {
-                'balot': {
-                    'candidates': ['SUPERHOT', 'Superflight'],
-                    'votes': {
+                ballot: {
+                    candidates: ['SUPERHOT', 'Superflight'],
+                    votes: {
                         'SUPERHOT': 3,
                         'Superflight': 3
                     }
@@ -62,9 +62,9 @@ describe('reducer', () => {
         const action = {
             type: 'SET_STATE',
             state: {
-                'balot': {
-                    'candidates': ['SUPERHOT', 'Superflight'],
-                    'votes': {
+                ballot: {
+                    candidates: ['SUPERHOT', 'Superflight'],
+                    votes: {
                         'SUPERHOT': 3,
                         'Superflight': 3
                     }

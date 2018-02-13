@@ -4,9 +4,9 @@ import React          from 'react';
 import ReactDOM       from 'react-dom';
 import { renderIntoDocument,
          scryRenderedDOMComponentsWithClass,
-         Simulate }   from 'react-dom/test-utils';
+         Simulate }    from 'react-dom/test-utils';
 
-import ResultsView    from '../../../src/app/Components/ResultsView/ResultsView';
+import { ResultsView } from '../../../src/app/Components/ResultsView/ResultsView';
 
 describe('ResultsView', () => {
     it("renders any number of candidate and vote number groups", () => {

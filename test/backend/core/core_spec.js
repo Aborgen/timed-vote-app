@@ -48,22 +48,25 @@ describe("application logic", () => {
             }));
         });
 
-        it("includes only the winner if there is no upcoming entry left", () => {
+        it("includes the results if there is no upcoming entry left", () => {
             const state = Map({
                 ballot: Map({
-                    candidates: List.of('SUPERHOT', 'Superflight'),
+                    candidates: List.of('SUPERHOT', 'Superflight', 'Valley'),
                     votes: Map({
                         'SUPERHOT': 26,
-                        'Superflight': 25
+                        'Superflight': 25,
+                        'Valley': 5
                     })
                 }),
                 entries: List()
             });
-            const nextState = currentVote(state);
+            const nextState = currentVote(state, 3);
             expect(nextState).to.equal(Map({
-                runnersUp: List.of('Superflight'),
-                winner: 'SUPERHOT'
-            }))
+                results: Map({
+                    runnersUp: List.of('Superflight', 'Valley'),
+                    winner: 'SUPERHOT'
+                })
+            }));
         });
     });
 
