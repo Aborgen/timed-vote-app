@@ -2,10 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes                from 'prop-types';
 
 class Ballot extends PureComponent {
-    componentWillMount() {
-        return this.getCandidates();
-    }
-
     getCandidates() {
         return this.props.candidates || [];
     }
@@ -15,7 +11,8 @@ class Ballot extends PureComponent {
     }
 
     render() {
-        const { candidates, hasVoted, vote } = this.props;
+        const { hasVoted, vote } = this.props;
+        const candidates = this.getCandidates();
         const options = candidates.map((candidate) => {
             return (
                 <button style={{"float":"left"}} key={candidate}

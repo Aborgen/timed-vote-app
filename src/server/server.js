@@ -8,5 +8,6 @@ export default function startServer(store, port = 8080) {
     io.on('connection', (socket) => {
         socket.emit('state', store.getState().toJS())
         socket.on('action', store.dispatch.bind(store))
+        console.count("IT IS I");
     });
 }
