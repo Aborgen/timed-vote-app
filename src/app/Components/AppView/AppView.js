@@ -20,7 +20,8 @@ export class AppView extends PureComponent {
 const mapStateToProps = (state) => {
     return {
         candidates: state.getIn(['ballot', 'candidates']),
-        results: state.results
+        hasVoted  : state.get('hasVoted'),
+        results   : state.get('results')
     };
 };
 

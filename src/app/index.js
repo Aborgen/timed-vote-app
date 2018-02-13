@@ -7,12 +7,14 @@ import io                    from 'socket.io-client'
 import registerServiceWorker from './registerServiceWorker';
 
 import App                   from './App';
-import reducer               from './Reducers/reducer';
+import { setState }          from './Redux/actionGen';
+import reducer               from './Redux/reducer';
+import config                from '../server/config/config.json';
 
 const store  = createStore(reducer);
-const socket = io("http://localhost:8080");
+const socket = io(`http://localhost:${config['port']}`);
 socket.on('state', (state) =>{
-    store.dispatch({ type: 'SET_STATE', state });
+    store.dispatch(setState(state))
 });
 
 ReactDOM.render(

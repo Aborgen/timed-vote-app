@@ -7,7 +7,7 @@ import config      from './config/config.json'
 const port         = config['port'];
 const n            = config['bracketSize'];
 export const store = makeStore(reducer);
-startServer(store, port);
+startServer(store, 8080);
 
 store.dispatch({
     type: 'SET_ENTRIES',
