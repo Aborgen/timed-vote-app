@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Results from '../Results/Results';
 
-class ResultsView extends PureComponent {
+export class ResultsView extends PureComponent {
 
     getCandidates() {
         return this.props.candidates || [];
@@ -47,6 +47,7 @@ class ResultsView extends PureComponent {
 const mapStateToProps = (state) => {
     return {
         candidates: state.getIn(['ballot', 'candidates']),
+        votes: state.getIn(['ballot', 'votes']),
         results: state.results
     };
 };

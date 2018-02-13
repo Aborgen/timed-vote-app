@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Ballot  from '../Ballot/Ballot';
 import Results from '../Results/Results';
 
-class AppView extends PureComponent {
+export class AppView extends PureComponent {
     render() {
         return (
             <Fragment>
