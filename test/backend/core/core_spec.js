@@ -1,7 +1,7 @@
 import { expect }     from 'chai';
 import { List, Map }  from 'immutable';
 
-import { setEntries, currentVote, vote } from '../../../src/server/core';
+import { setEntries, currentVote, vote } from '../../../src/server/Redux/core';
 
 describe("application logic", () => {
     describe('setEntries', () => {

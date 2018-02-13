@@ -1,7 +1,7 @@
 import { expect }    from 'chai';
 import { List, Map } from 'immutable';
 
-import reducer       from '../../../src/server/reducer';
+import reducer       from '../../../src/server/Redux/reducer';
 
 describe('reducer', () => {
     it("has an initial state", () => {

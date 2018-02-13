@@ -1,7 +1,7 @@
 import { expect }    from 'chai';
 import { List, Map } from 'immutable';
 
-import makeStore     from '../../../src/server/store';
+import makeStore     from '../../../src/server/Redux/store';
 
 describe('store', () => {
     it("is a Redux store", () => {

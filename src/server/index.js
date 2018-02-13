@@ -1,5 +1,5 @@
-import makeStore   from './store';
-import reducer     from './reducer';
+import makeStore   from './Redux/store';
+import reducer     from './Redux/reducer';
 import startServer from './server';
 import candidates  from './config/candidates.json';
 import config      from './config/config.json'
