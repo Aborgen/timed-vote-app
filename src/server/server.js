@@ -1,6 +1,6 @@
 import Server from 'socket.io';
 
-export default function startServer(store, port = 8080) {
+function startServer(store, port = 8080) {
     const io = new Server().attach(port);
     store.subscribe(
         () => io.emit('state', store.getState().toJS())
@@ -11,3 +11,5 @@ export default function startServer(store, port = 8080) {
         console.count("IT IS I");
     });
 }
+
+export default startServer;

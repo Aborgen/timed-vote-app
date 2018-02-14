@@ -1,4 +1,7 @@
 import { List, Map } from 'immutable';
+import config from '../config/config.json';
+
+const bracketSize = config['bracketSize'];
 
 function assignWinner(ballot) {
     if(!ballot) {
@@ -20,7 +23,8 @@ function setEntries(state, entries) {
     return state.set('entries', List(entries));
 }
 
-function currentVote(state, n = 2) {
+function currentVote(state, n = bracketSize) {
+
     const entries = state.get('entries').concat(
         assignWinner(state.get('ballot'))
     );
@@ -45,7 +49,7 @@ function currentVote(state, n = 2) {
 
 function vote(state, entry) {
     return state.updateIn(
-        ['votes', entry],
+        ['ballot', 'votes', entry],
         0,
         (votes) => votes + 1
     );

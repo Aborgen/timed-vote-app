@@ -7,8 +7,7 @@ export default function reducer(state = INITAL_STATE, action) {
         case 'CURRENT_VOTE':
             return currentVote(state, action.n);
         case 'VOTE':
-            return state.update('ballot',
-                (voteState) => vote(voteState, action.entry));
+            return vote(state, action.candidate);
         default:
             return state;
     };

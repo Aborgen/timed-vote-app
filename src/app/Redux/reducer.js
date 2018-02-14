@@ -1,5 +1,5 @@
 
-import { INITAL_STATE } from '../../server/core';
+import { INITAL_STATE } from '../../server/Redux/core';
 
 function setState(state, newState, maybeResetVote) {
     return maybeResetVote(state.merge(newState));
