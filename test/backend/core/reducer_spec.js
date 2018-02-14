@@ -43,7 +43,7 @@ describe('reducer', () => {
             }),
             entries: List()
         });
-        const action = { type: 'VOTE', entry: 'SUPERHOT' }
+        const action = { type: 'VOTE', candidate: 'SUPERHOT', n: 2 }
         const nextState = reducer(state, action);
         expect(nextState).to.equal(Map({
             ballot: Map({
@@ -55,16 +55,18 @@ describe('reducer', () => {
     });
 
     it('can be used with reduce(vanilla spec) to perform batch actions', () => {
+        const n = 2;
         const actions = [
             { type: 'SET_ENTRIES',
                 entries: ['SUPERHOT', 'Superflight', 'Valley']},
-            { type: 'CURRENT_VOTE' },
-            { type: 'VOTE', entry: 'SUPERHOT' },
-            { type: 'VOTE', entry: 'Superflight' },
-            { type: 'VOTE', entry: 'SUPERHOT' },
-            { type: 'VOTE', entry: 'SUPERHOT' },
-            { type: 'CURRENT_VOTE' },
-            { type: 'CURRENT_VOTE' }
+            { type: 'CURRENT_VOTE', n },
+            { type: 'VOTE', candidate: 'SUPERHOT' },
+            { type: 'VOTE', candidate: 'Superflight' },
+            { type: 'VOTE', candidate: 'SUPERHOT' },
+            { type: 'VOTE', candidate: 'SUPERHOT' },
+            { type: 'CURRENT_VOTE', n },
+            { type: 'VOTE', candidate: 'SUPERHOT' },
+            { type: 'CURRENT_VOTE', n }
         ];
         const finalState = actions.reduce(reducer, Map());
         expect(finalState).to.equal(Map({

@@ -1,7 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import Results from '../Results/Results';
+import Results        from '../Results/Results';
+import * as ActionGen from '../../Redux/actionGen';
+
 
 export class ResultsView extends PureComponent {
 
@@ -34,7 +36,7 @@ export class ResultsView extends PureComponent {
                     : <div>{options}</div> }
                 <div className="management">
                     <button className="nextVote"
-                            onClick={this.props.nextVote}
+                            onClick={this.props.currentVote}
                             ref="nextVote">
                         Next Vote
                     </button>
@@ -52,4 +54,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(ResultsView);
+export default connect(mapStateToProps, ActionGen)(ResultsView);

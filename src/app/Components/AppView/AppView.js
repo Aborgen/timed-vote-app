@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Ballot  from '../Ballot/Ballot';
 import Results from '../Results/Results';
+import * as ActionGen from '../../Redux/actionGen';
 
 export class AppView extends PureComponent {
     render() {
@@ -25,4 +26,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(AppView);
+export default connect(mapStateToProps, ActionGen)(AppView);

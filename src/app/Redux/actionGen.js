@@ -4,7 +4,18 @@ function setState(state) {
 }
 
 function vote(candidate) {
-    return { type: 'VOTE', candidate };
+    return {
+        meta: { remote: true },
+        type: 'VOTE',
+        candidate
+    };
 }
 
-export { setState, vote };
+function currentVote() {
+    return {
+        meta: { remote: true },
+        type: 'CURRENT_VOTE'
+    };
+}
+
+export { setState, vote, currentVote };

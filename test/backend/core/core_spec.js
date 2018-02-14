@@ -19,7 +19,7 @@ describe("application logic", () => {
         it("creates state containing n entries of available candidates", () => {
             const entries = List.of('SUPERHOT', 'Superflight', 'Valley');
             const state = Map({ entries });
-            const nextState = currentVote(state);
+            const nextState = currentVote(state, 2);
             expect(nextState).to.equal(Map({
                 ballot: Map({
                     candidates: List.of('SUPERHOT', 'Superflight')
@@ -39,7 +39,7 @@ describe("application logic", () => {
                 }),
                 entries: List.of('Valley', 'Crysis 2', 'Attack on Titan')
             });
-            const nextState = currentVote(state);
+            const nextState = currentVote(state, 2);
             expect(nextState).to.equal(Map({
                 ballot: Map({
                     candidates: List.of('Valley', 'Crysis 2')
@@ -73,30 +73,42 @@ describe("application logic", () => {
     describe('vote', () => {
         it("creates a vote counter if one does not exist", () => {
             const state = Map({
-                candidates: List.of('SUPERHOT', 'Superflight')
+                ballot: Map({
+                    candidates: List.of('SUPERHOT', 'Superflight')
+                }),
+                entries: List()
             });
             const nextState = vote(state, 'SUPERHOT');
             expect(nextState).to.equal(Map({
-                candidates: List.of('SUPERHOT', 'Superflight'),
-                votes: Map({ 'SUPERHOT': 1 })
+                ballot: Map({
+                    candidates: List.of('SUPERHOT', 'Superflight'),
+                    votes: Map({ 'SUPERHOT': 1 })
+                }),
+                entries: List()
             }));
         });
 
         it("increments the vote counter if it does exist", () => {
             const state = Map({
-                candidates: List.of('SUPERHOT', 'Superflight'),
-                votes: Map({
-                    'SUPERHOT': 3,
-                    'Superflight': 3
-                })
+                ballot: Map({
+                    candidates: List.of('SUPERHOT', 'Superflight'),
+                    votes: Map({
+                        'SUPERHOT': 3,
+                        'Superflight': 3
+                    })
+                }),
+                entries: List()
             });
             const nextState = vote(state, 'SUPERHOT');
             expect(nextState).to.equal(Map({
-                candidates: List.of('SUPERHOT', 'Superflight'),
-                votes: Map({
-                    'SUPERHOT': 4,
-                    'Superflight': 3
-                })
+                ballot: Map({
+                    candidates: List.of('SUPERHOT', 'Superflight'),
+                    votes: Map({
+                        'SUPERHOT': 4,
+                        'Superflight': 3
+                    })
+                }),
+                entries: List()
             }));
         });
     });
